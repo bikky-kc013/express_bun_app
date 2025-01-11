@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express from "express";
 import { Database } from "./infrastructure/datasource/postgres/postgres-dataSource";
 import { ExpressConfig } from "./app.config";
