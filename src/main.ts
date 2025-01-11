@@ -1,5 +1,5 @@
 import express from "express";
-import { Database } from "./infrastructure/datasource/mysql/mysql-dataSource";
+import { Database } from "./infrastructure/datasource/postgres/postgres-dataSource";
 import { ExpressConfig } from "./app.config";
 
 (async () => {
