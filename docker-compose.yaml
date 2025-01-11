@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "4400:4400"
+    depends_on:
+      - bunDb
+    volumes:
+      - .:/usr/src/app
+    command: bun run dev
+
+  bunDb:
+    image: postgres:latest
+    container_name: bunDb
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - bunDb:/var/lib/postgresql/data
+
+volumes:
+  bunDb:
