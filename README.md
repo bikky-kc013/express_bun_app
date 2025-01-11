@@ -3,14 +3,14 @@
 To install dependencies:
 
 ```bash
-bun install
+git clone https://github.com/bikky-kc013/express_bun_app.git
 ```
 
 To run:
 
 ```bash
-bun run main.ts
+docker compose up --build
 ```
 
-This project was created using `bun init` in bun v1.1.42. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This is a express application based on bunjs, a multithreaded javascript runtime environment made for change.
 # express_bun_app
