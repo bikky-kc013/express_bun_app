@@ -7,7 +7,10 @@
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
-
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "build",
+    "strictPropertyInitialization": false,
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -22,6 +25,10 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }
