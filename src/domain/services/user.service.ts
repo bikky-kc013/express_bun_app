@@ -1,4 +1,4 @@
-import type { CreateUserDto, UserResposeDto } from "@/application/dtos/userDto";
+import type { CreateUserDto, UserResposeDto } from "@/application/dtos";
 
 export interface IUserService {
   createUser(data: CreateUserDto): Promise<UserResposeDto>;

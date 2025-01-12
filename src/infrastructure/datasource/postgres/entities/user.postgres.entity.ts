@@ -9,7 +9,7 @@ import {
 import type { IUserModel } from "@/domain/models";
 import { UserRole } from "@/domain/enums";
 
-@Entity()
+@Entity({ name: "user" })
 export class UserEntity implements IUserModel {
   @PrimaryGeneratedColumn()
   id: number;
