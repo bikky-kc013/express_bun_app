@@ -1,19 +1,13 @@
-import express from "express";
+import type { Express } from "express";
+import routes from "./presentation/routes";
+import logger from "./infrastructure/logging/logger";
 
-export class ExpressConfig {
-  private app: express.Application;
-  private port = Number(Bun.env.APP_PORT) || 3000;
-  constructor(express: express.Application) {
-    this.app = express;
-  }
-
-  public async init(): Promise<void> {
-    try {
-      this.app.listen(this.port, () => {
-        console.info(`Express Server is listening to port ${this.port}`);
-      });
-    } catch (error) {
-      console.error(error);
-    }
+export class Config {
+  initializeExpress(app: Express, port?: number) {
+    const PORT = port || 4000;
+    routes(app);
+    app.listen(PORT, () => {
+      logger.info(`Server running on port ${PORT}`);
+    });
   }
 }

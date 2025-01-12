@@ -1,15 +1,16 @@
 import "reflect-metadata";
 import express from "express";
 import { Database } from "./infrastructure/datasource/postgres/postgres-dataSource";
-import { ExpressConfig } from "./app.config";
+import { Config } from "./app.config";
 
 (async () => {
   const app = express();
-  const Express = new ExpressConfig(app);
+  const expressServer = new Config();
   try {
+    const port = Bun.env.APP_PORT ? Number(Bun.env.APP_PORT) : 4000;
     await Database.initialize();
-    await Express.init();
+    expressServer.initializeExpress(app, port);
   } catch (error) {
-    console.log(error);
+    console.error("Error during initialization", { error });
   }
 })();

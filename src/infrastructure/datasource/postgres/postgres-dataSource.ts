@@ -1,4 +1,6 @@
 import { DataSource } from "typeorm";
+import { UserEntity } from "./entities";
+import logger from "@/infrastructure/logging/logger";
 
 export class Database {
   private static dataSource: DataSource;
@@ -12,8 +14,9 @@ export class Database {
         username: Bun.env.DB_USER,
         password: Bun.env.DB_PASSWORD,
         database: Bun.env.DB_NAME,
-        entities: [],
+        entities: [UserEntity],
         synchronize: true,
+        logging: false,
       });
     }
     return Database.dataSource;
@@ -23,9 +26,7 @@ export class Database {
     const dataSource = Database.getDataSource();
     if (!dataSource.isInitialized) {
       await dataSource.initialize();
-      console.log("Database connection initialized");
-    } else {
-      console.log("Database connection is already initialized");
+      logger.info("Database connection initialized");
     }
   }
 }
